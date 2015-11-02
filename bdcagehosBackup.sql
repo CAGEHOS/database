@@ -5,7 +5,7 @@
 -- Dumped from database version 9.5beta1
 -- Dumped by pg_dump version 9.5beta1
 
--- Started on 2015-11-01 19:13:11
+-- Started on 2015-11-02 14:00:46
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -84,23 +84,23 @@ SET default_with_oids = false;
 --
 
 CREATE TABLE empregado (
-    nome character varying(85),
-    cpf character varying(14),
-    tipo_id character varying(3),
-    numero_id character varying(15),
-    sexo character varying(12),
-    estado_civil character varying(18),
+    nome character varying(85) NOT NULL,
+    cpf character(14) NOT NULL,
+    tipo_id character varying(3) NOT NULL,
+    numero_id character varying(12) NOT NULL,
+    sexo character varying(12) NOT NULL,
+    estado_civil character varying(18) NOT NULL,
     cidade character varying(46),
     estado character(2),
-    cep character varying(10),
+    cep character(10),
     logradouro character varying(80),
     numero character varying(6),
     bairro character varying(40),
     complemento character varying(50),
-    setor character varying(20),
-    cargo character varying(20),
+    setor character varying(20) NOT NULL,
+    cargo character varying(20) NOT NULL,
     area_especialidades character varying(500),
-    data_nascimento character(11)
+    data_nascimento character(11) NOT NULL
 );
 
 
@@ -113,11 +113,11 @@ ALTER TABLE empregado OWNER TO postgres;
 
 CREATE TABLE medico (
     nome character varying(85) NOT NULL,
-    cpf character(14),
-    tipo_id character varying(3),
-    numero_id character varying(15),
-    sexo character varying(12),
-    estado_civil character varying(18),
+    cpf character(14) NOT NULL,
+    tipo_id character varying(3) NOT NULL,
+    numero_id character varying(12) NOT NULL,
+    sexo character varying(12) NOT NULL,
+    estado_civil character varying(18) NOT NULL,
     cidade character varying(46),
     estado character(2),
     cep character(10),
@@ -125,10 +125,10 @@ CREATE TABLE medico (
     numero character varying(6),
     bairro character varying(40),
     complemento character varying(50),
-    crm character varying(12),
-    pron_tratamento character varying(4),
+    crm character varying(12) NOT NULL,
+    pron_tratamento character varying(4) NOT NULL,
     area_especialidades character varying(500),
-    data_nascimento character(11)
+    data_nascimento character(11) NOT NULL
 );
 
 
@@ -140,12 +140,12 @@ ALTER TABLE medico OWNER TO postgres;
 --
 
 CREATE TABLE paciente (
-    nome character varying(85),
-    cpf character(14),
-    tipo_id character varying(3),
-    numero_id character varying(15),
-    sexo character varying(12),
-    estado_civil character varying(18),
+    nome character varying(85) NOT NULL,
+    cpf character(14) NOT NULL,
+    tipo_id character varying(3) NOT NULL,
+    numero_id character varying(12) NOT NULL,
+    sexo character varying(12) NOT NULL,
+    estado_civil character varying(18) NOT NULL,
     cidade character varying(46),
     estado character(2),
     cep character(10),
@@ -153,11 +153,11 @@ CREATE TABLE paciente (
     numero character varying(6),
     bairro character varying(40),
     complemento character varying(50),
-    tipo_sanguineo character varying(3),
-    tipo_atendimento character varying(10),
-    medico_preferencial character varying(30) NOT NULL,
-    observacoes character varying(500),
-    data_nascimento character(11)
+    tipo_sanguineo character varying(3) NOT NULL,
+    tipo_atendimento character varying(10) NOT NULL,
+    medico_preferencial character varying(85) NOT NULL,
+    observacoes character varying(500) NOT NULL,
+    data_nascimento character(11) NOT NULL
 );
 
 
@@ -169,9 +169,6 @@ ALTER TABLE paciente OWNER TO postgres;
 -- Data for Name: empregado; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO empregado (nome, cpf, tipo_id, numero_id, sexo, estado_civil, cidade, estado, cep, logradouro, numero, bairro, complemento, setor, cargo, area_especialidades, data_nascimento) VALUES ('teste', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO empregado (nome, cpf, tipo_id, numero_id, sexo, estado_civil, cidade, estado, cep, logradouro, numero, bairro, complemento, setor, cargo, area_especialidades, data_nascimento) VALUES ('ZimbabueTESTE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO empregado (nome, cpf, tipo_id, numero_id, sexo, estado_civil, cidade, estado, cep, logradouro, numero, bairro, complemento, setor, cargo, area_especialidades, data_nascimento) VALUES ('ZimbabueTESTE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -191,8 +188,6 @@ se caso ainda quisermos colocar.', '24/05/1994 ');
 -- Data for Name: paciente; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO paciente (nome, cpf, tipo_id, numero_id, sexo, estado_civil, cidade, estado, cep, logradouro, numero, bairro, complemento, tipo_sanguineo, tipo_atendimento, medico_preferencial, observacoes, data_nascimento) VALUES ('Jorge Teste', '023.770.820   ', 'RG', '4105026415', 'Masculino', 'Solteiro', 'Erechim', 'RS', '99.700-00 ', 'Giacom luiz torresmo', '524', 'boca de lajota', 'rapadura seca', 'A+', 'Normal', 'Toninho Zico', 'Muleque piranha, piso em caco de vidro, encravo duas unha', NULL);
-INSERT INTO paciente (nome, cpf, tipo_id, numero_id, sexo, estado_civil, cidade, estado, cep, logradouro, numero, bairro, complemento, tipo_sanguineo, tipo_atendimento, medico_preferencial, observacoes, data_nascimento) VALUES ('Maria tere motogrande', '003.170.320   ', 'RG', '5206955623', 'Feminino', 'Solteiro', 'Erechim', 'RS', '99.700-00 ', 'Davi Gilmor floyd', '658', 'três toques forte na garganta', 'agua dura tando bate', 'A+', 'Normal', 'Eduardo Servero', 'mina malandra, gravida gemeos, 3 meses marido não sabe, ta trabalhando de caminhoneiro no ceará', NULL);
 
 
 --
@@ -207,7 +202,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2015-11-01 19:13:11
+-- Completed on 2015-11-02 14:00:46
 
 --
 -- PostgreSQL database dump complete
